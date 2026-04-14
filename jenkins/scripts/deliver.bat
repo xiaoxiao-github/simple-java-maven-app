@@ -8,6 +8,7 @@ echo volume).
 @echo on
 mvn jar:jar install:install help:evaluate -Dexpression=project.name
 @echo off
+echo [DEBUG] Step 1 completed
 
 echo The following command extracts the value of the ^<name/^> element
 echo within ^<project/^> of your Java/Maven project's "pom.xml" file.
@@ -15,6 +16,7 @@ echo within ^<project/^> of your Java/Maven project's "pom.xml" file.
 @echo on
 FOR /F "tokens=*" %%i IN ('mvn -q -DforceStdout help:evaluate -Dexpression=project.name') DO SET NAME=%%i
 @echo off
+echo [DEBUG] NAME = %NAME%
 
 echo The following command behaves similarly to the previous one but
 echo extracts the value of the ^<version/^> element within ^<project/^> instead.
@@ -22,6 +24,7 @@ echo extracts the value of the ^<version/^> element within ^<project/^> instead.
 @echo on
 FOR /F "tokens=*" %%i IN ('mvn -q -DforceStdout help:evaluate -Dexpression=project.version') DO SET VERSION=%%i
 @echo off
+echo [DEBUG] VERSION = %VERSION%
 
 echo The following command runs and outputs the execution of your Java
 echo application (which Jenkins built using Maven) to the Jenkins UI.
